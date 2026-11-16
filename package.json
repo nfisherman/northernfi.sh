@@ -1,0 +1,24 @@
+{
+  "name": "northernfi.sh",
+  "version": "1.0.0",
+  "description": "Content of northernfi.sh",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx @11ty/eleventy --serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nfisherman/northernfi.sh.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/nfisherman/northernfi.sh/issues"
+  },
+  "homepage": "https://github.com/nfisherman/northernfi.sh#readme",
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.8"
+  }
+}
