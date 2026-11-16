@@ -10,7 +10,7 @@ export default async function(eleventyConfig) {
 
     if (process.env.ENVIRONMENT == 'PRODUCTION') {
         eleventyConfig.addShortcode('absolute_url', function(path) {
-            return URL(path, process.env.URL).href
+            return new URL(path, process.env.URL).href
         });
 
         return {
