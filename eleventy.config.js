@@ -8,10 +8,13 @@ export default async function(eleventyConfig) {
 
     eleventyConfig.addGlobalData('site.URL', process.env.URL)
 
-    if (process.env.ENVIRONMENT == 'PRODUCTION') {
+    const prodFunctions = () => {
         eleventyConfig.addShortcode('absolute_url', function(path) {
-            return new URL(path, process.env.URL).href
+            return new URL(path, `https://${process.env.URL}/`).href;
         });
+    }
+    if (process.env.ENVIRONMENT == 'PROD') {
+        prodFunctions();
 
         return {
             dir: {
@@ -22,7 +25,11 @@ export default async function(eleventyConfig) {
     } else {
         eleventyConfig.addPassthroughCopy({'data': './'})
 
-        eleventyConfig.addShortcode('absolute_url', function(path) { return path });
+        if (process.env.ENVIRONMENT == 'FAKE_PROD') {
+            prodFunctions();
+        } else {
+            eleventyConfig.addShortcode('absolute_url', function(path) { return path });
+        }
 
         return {
             dir: {
