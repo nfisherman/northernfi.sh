@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title | default: site.URL }}</title>
+    {%- if favicon == nil -%}
+      {%- assign favicon_url = "/images/favicon" -%}
+      {%- assign favicon = "nfsh" -%}
+    {%- else -%}
+      {%- assign favicon_url = "/images/favicon/alt/{{ favicon }}" -%}
+    {%- endif -%}
+    {% assign favicon_version = favicon_version | default: "20261111" %}
+    <link
+      rel="icon"
+      type="image/png"
+      href="{{ favicon_url | append: "/favicon-96x96.png?v=" | append: favicon_version }}"
+      sizes="96x96" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="{{ favicon_url | append: "/favicon-32x32.png?v=" | append: favicon_version }}"
+      sizes="32x32">
+    <link
+      rel="icon"
+      type="image/png"
+      href="{{ favicon_url | append: "/favicon-16x16.png?v=" | append: favicon_version }}"
+      sizes="16x16">
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="{{ favicon_url | append: "/favicon.svg?v=" | append: favicon_version }}" />
+    <link rel="shortcut icon" href="{{ favicon_url | append: "/favicon.ico?v=" | append: favicon_version }}" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="{{ favicon_url | append: "/apple-touch-icon.png?v=" | append: favicon_version }}" />
+    <meta name="apple-mobile-web-app-title" content="{{ favicon }}" />
+    <link rel="manifest" href="{{ favicon_url | append: "/site.webmanifest?v=" | append: favicon_version }}" />
+  </head>
+  <body>
+    {{ content }}
+  </body>
+</html>
